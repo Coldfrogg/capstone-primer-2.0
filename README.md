@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=22851212&assignment_repo_type=AssignmentRepo)
-=======
->>>>>>> 646c1f69d2131cc0ca1d3e60f50f0dc73d731715
+
 # Student Grading System – Primer
 
 **This is an individual exercise.**
