@@ -17,6 +17,7 @@ def get_students():
     Route to fetch all students from the database
     return: Array of student objects
     """
+
     try:
         students = db.get_all_students()
         return jsonify(students), 200
@@ -33,6 +34,7 @@ def create_student():
     param mark: The mark the student received (from request body)
     return: The created student if successful
     """
+
     try:
         student_data = request.json
         name = student_data.get("name")
@@ -58,6 +60,7 @@ def update_student(student_id):
     param mark: The mark the student received (from request body)
     return: The updated student if successful
     """
+
     try:
         student_data = request.json
         name = student_data.get("name")
@@ -82,6 +85,7 @@ def delete_student(student_id):
     Route to delete student by id
     return: The deleted student
     """
+
     try:
         deleted_student = db.delete_student(student_id)
         if not deleted_student:
@@ -114,7 +118,6 @@ def get_stats():
         return jsonify(stats), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 404
-
 
 @app.route("/")
 def health():
