@@ -60,7 +60,6 @@ def update_student(student_id):
     param mark: The mark the student received (from request body)
     return: The updated student if successful
     """
-
     try:
         student_data = request.json
         name = student_data.get("name")
@@ -70,7 +69,7 @@ def update_student(student_id):
         if not name or not course or mark is None:
             raise ValueError("Missing required student data")
 
-        updated_student = db.update_student(student_id)
+        updated_student = db.update_student(student_id, name, course, mark)
         if not updated_student:
             raise ValueError(f"Student with id {student_id} not found")
         
@@ -111,7 +110,7 @@ def get_stats():
         marks = [s["mark"] for s in students]
         stats = {
             "count": len(marks),
-            "average": sum(marks) / len(marks),
+            "average": round(sum(marks) / len(marks), 2),
             "min": min(marks),
             "max": max(marks)
         }
@@ -126,4 +125,4 @@ def health():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5002)

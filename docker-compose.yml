@@ -23,7 +23,7 @@ services:
       DB_USER: marksuser
       DB_PASSWORD: markspass
     ports:
-      - "5002:5000"
+      - "5002:5002"
 
   frontend:
     build: ./frontend
