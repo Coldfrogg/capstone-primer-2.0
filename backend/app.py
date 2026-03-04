@@ -41,8 +41,8 @@ def create_student():
         course = student_data.get("course")
         mark = student_data.get("mark")
 
-        if not name or not course or mark is None:
-            raise ValueError("Missing required student data")
+        # if not name or not course or mark is None:
+        #     raise ValueError("Missing required student data")
 
         new_student = db.insert_student(name, course, mark)
 
@@ -104,10 +104,18 @@ def get_stats():
 
     try:
         students = db.get_all_students()
+
         if not students:
             # handle case with no students, all values 0
             return jsonify({"count": 0, "average": 0, "min": 0, "max": 0}), 200
-        marks = [s["mark"] for s in students]
+        
+        marks = []
+        for s in students:
+            n_mark = s.get("mark")
+            if n_mark is None or n_mark == "":
+                continue
+            marks.append(int(n_mark))
+        
         stats = {
             "count": len(marks),
             "average": round(sum(marks) / len(marks), 2),
